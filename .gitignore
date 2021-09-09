@@ -1,0 +1,11 @@
+/parent/parent
+/child/child
+/parent/obj/
+/child/obj
+req
+res	
+.DS_Store
+/parent/.DS_Store
+/parent/bin/.DS_Store
+/child/.DS_Store
+/child/bin/.DS_Store
