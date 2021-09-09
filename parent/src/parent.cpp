@@ -95,8 +95,12 @@ void run_child(char *cmd)
             printf("PARENT read %ld chars: [%s]\n",readbytes,readbuf);
             write(req,readbuf,strlen(readbuf));
         }
+        sleep(2);
+
     }
-    while ( !WIFEXITED(status) && !WIFSIGNALED(status) );
+    while ( true );
+
+//    while ( !WIFEXITED(status) && !WIFSIGNALED(status) );
     
     printf("close\n");
     if (waitpid(pid, &exit_code, 0) != -1)

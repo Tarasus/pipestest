@@ -35,12 +35,13 @@ int main(int argc, char* argv[])
     char buf[256];
     memset(buf,0,256);
     int timeout_cnt = 0;
-
+    int cnt = 0;
+    
     while (true)
     {
-        printf("CHILD READ\n");
+        //printf("CHILD READ\n");
         ssize_t readbytes = read(req, buf, 256);
-        printf("CHILD READ done\n");
+        //printf("CHILD READ done\n");
 
         if(readbytes == 0)
         {
@@ -59,10 +60,15 @@ int main(int argc, char* argv[])
         }
         else
         {
-            printf("CHILD read %ld chars: [%s]\n",readbytes,buf);
+            printf("CHILD  read %ld chars: [%s]\n",readbytes,buf);
+            char num[17];
+            sprintf(num,"%d",cnt);
+            strcat(buf,num);
             write(res,buf,strlen(buf));
-
+            cnt++;
         }
+        sleep(2);
+
     }
     
     close(req);
